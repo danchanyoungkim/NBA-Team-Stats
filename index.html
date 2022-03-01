@@ -12,5 +12,22 @@
         <!-- testing bulma -->
         <h1 class = "title is-1 has-text-white has-background-black-bis">NBA Team Stats</h1>
     </header>
+    <div>
+    <!-- must be placed inside body for main area-->
+    <table id="teamStats"></table>
+
+
+
+
+        <select id="dropDown" onchange="getApi()">
+            <option value="Los Angeles Clippers">Los Angeles Clippers</option>
+            <option value="Los Angeles Lakers">Los Angeles Lakers</option>
+            <option value="Chicago Bulls">Chicago Bulls</option>
+
+
+        </select>
+
+    </div> 
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
