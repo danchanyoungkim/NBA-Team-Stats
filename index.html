@@ -17,47 +17,46 @@
 
     <main>
         <div class='tile'>
-            <div class='tile is-2' style='background-color: white; height: 700px;'>
                 <div class = "column auto">
                     <p class = "has-text-centered"> Select your team: </p>
                     <!-- id 'teamList' will be a function-->
-                    <select name = "team" class = "teamList" id = "teamList">
-                      <option> ------ Select Your Team ------ </option>
-                      <option>ATL	- Atlanta Hawks</option>
-                      <option>BOS	- Boston Celtics</option>
-                      <option>BKN	- Brooklyn Nets</option>
-                      <option>CHA	- Charlotte Hornets</option>
-                      <option>CHI	- Chicago Bulls</option>
-                      <option>CLE	- Cleveland Cavaliers</option>
-                      <option>DAL	- Dallas Mavericks</option>
-                      <option>DEN	- Denver Nuggets</option>
-                      <option>DET	- Detroit Pistons</option>
-                      <option>GSW	- Golden State Warriors</option>
-                      <option>HOU - Houston Rockets</option>
-                      <option>IND	- Indiana Pacers</option>
-                      <option>LAC - Los Angeles Clippers</option>
-                      <option>LAL	- Los Angeles Lakers</option>
-                      <option>MEM	- Memphis Grizzlies</option>
-                      <option>MIA	- Miami Heat</option>
-                      <option>MIL	- Milwaukee Bucks</option>
-                      <option>MIN	- Minnesota Timberwolves</option>
-                      <option>NOH	- New Orleans Pelicans</option>
-                      <option>NYK	- New York Knicks</option>
-                      <option>OKC	- Oklahoma City Thunder</option>
-                      <option>ORL	- Orlando Magic</option>
-                      <option>PHI	- Philadelphia 76ers</option>
-                      <option>PHO	- Phoenix Suns</option>
-                      <option>POR	- Portland Trail Blazers</option>
-                      <option>SAC	- Sacramento Kings</option>
-                      <option>SAS - San Antonio Spurs</option>
-                      <option>TOR	- Toronto Raptors</option>
-                      <option>UTH	- Utah Jazz</option>
-                      <option>WAS	- Washington Wizards</option>
+                    <select class = "teamList" id = "teamList" onchange = "getApi()">
+                      <option> ---- Select Your Team ---- </option>
+                      <option>Atlanta Hawks</option>
+                      <option>Boston Celtics</option>
+                      <option>Brooklyn Nets</option>
+                      <option>Charlotte Hornets</option>
+                      <option>Chicago Bulls</option>
+                      <option>Cleveland Cavaliers</option>
+                      <option>Dallas Mavericks</option>
+                      <option>Denver Nuggets</option>
+                      <option>Detroit Pistons</option>
+                      <option>Golden State Warriors</option>
+                      <option>Houston Rockets</option>
+                      <option>Indiana Pacers</option>
+                      <option>Los Angeles Clippers</option>
+                      <option>Los Angeles Lakers</option>
+                      <option>Memphis Grizzlies</option>
+                      <option>Miami Heat</option>
+                      <option>Milwaukee Bucks</option>
+                      <option>Minnesota Timberwolves</option>
+                      <option>New Orleans Pelicans</option>
+                      <option>New York Knicks</option>
+                      <option>Oklahoma City Thunder</option>
+                      <option>Orlando Magic</option>
+                      <option>Philadelphia 76ers</option>
+                      <option>Phoenix Suns</option>
+                      <option>Portland Trail Blazers</option>
+                      <option>Sacramento Kings</option>
+                      <option>San Antonio Spurs</option>
+                      <option>Toronto Raptors</option>
+                      <option>Utah Jazz</option>
+                      <option>Washington Wizards</option>
                     </select>
                     <button type = "button">Submit</button>
                   </div>    
-            <div class='tile is-7' style='background-color: brown; height: 700px;'>2</div>
-            <div class='tile is-3' style='background-color:yellow; height: 700px;'>3</div>
+            <div class='column is-two-thirds' style='background-color: brown; height: 700px;'>2</div>
+            <div class='column auto' style='background-color:yellow; height: 700px;'>3</div>
         </div>
     </main>
 
