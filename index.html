@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
     <link rel='stylesheet' href='./assets/css/style.css'>
     <title>NBA Team Stats</title>
-</head>
 
 <body>
     <header>
@@ -19,20 +18,48 @@
     <main>
         <div class='tile'>
             <div class='tile is-2' style='background-color: white; height: 700px;'>
-                <label for="teams">Choose a team:</label>
-
-                <select name="cars" id="teams">
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select>
-                </div>
+                <div class = "column auto">
+                    <p class = "has-text-centered"> Select your team: </p>
+                    <!-- id 'teamList' will be a function-->
+                    <select name = "team" class = "teamList" id = "teamList">
+                      <option> ------ Select Your Team ------ </option>
+                      <option>ATL	- Atlanta Hawks</option>
+                      <option>BOS	- Boston Celtics</option>
+                      <option>BKN	- Brooklyn Nets</option>
+                      <option>CHA	- Charlotte Hornets</option>
+                      <option>CHI	- Chicago Bulls</option>
+                      <option>CLE	- Cleveland Cavaliers</option>
+                      <option>DAL	- Dallas Mavericks</option>
+                      <option>DEN	- Denver Nuggets</option>
+                      <option>DET	- Detroit Pistons</option>
+                      <option>GSW	- Golden State Warriors</option>
+                      <option>HOU - Houston Rockets</option>
+                      <option>IND	- Indiana Pacers</option>
+                      <option>LAC - Los Angeles Clippers</option>
+                      <option>LAL	- Los Angeles Lakers</option>
+                      <option>MEM	- Memphis Grizzlies</option>
+                      <option>MIA	- Miami Heat</option>
+                      <option>MIL	- Milwaukee Bucks</option>
+                      <option>MIN	- Minnesota Timberwolves</option>
+                      <option>NOH	- New Orleans Pelicans</option>
+                      <option>NYK	- New York Knicks</option>
+                      <option>OKC	- Oklahoma City Thunder</option>
+                      <option>ORL	- Orlando Magic</option>
+                      <option>PHI	- Philadelphia 76ers</option>
+                      <option>PHO	- Phoenix Suns</option>
+                      <option>POR	- Portland Trail Blazers</option>
+                      <option>SAC	- Sacramento Kings</option>
+                      <option>SAS - San Antonio Spurs</option>
+                      <option>TOR	- Toronto Raptors</option>
+                      <option>UTH	- Utah Jazz</option>
+                      <option>WAS	- Washington Wizards</option>
+                    </select>
+                    <button type = "button">Submit</button>
+                  </div>    
             <div class='tile is-7' style='background-color: brown; height: 700px;'>2</div>
             <div class='tile is-3' style='background-color:yellow; height: 700px;'>3</div>
         </div>
     </main>
-
 
 </body>
 
