@@ -1,8 +1,13 @@
 const api_url = "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4"
 let dropDown = document.getElementById("dropDown")
+let teamAbr = document.getElementById("teamAbr")
 
 
 function teamData(team) {
+    let h2Team = `<h2>${team.Name} - ${team.Team}</h2>`
+        document.getElementById("teamAbr").innerHTML = h2Team
+
+
     let tableColumns = `<tr>
         <th>Games</th>
         <th>Wins</th>
