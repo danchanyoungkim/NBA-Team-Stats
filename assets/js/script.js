@@ -1,21 +1,35 @@
 const api_url = "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4"
 // const api_url2 = 245345
 let dropDown = document.getElementById("dropDown")
-dropDown.addEventListener("change", function(){
-    getApi(api_url).then(function(info){
+
+// function getTicketmaster(teamName){
+// fetch ticket master api and get all events for selected team.(teamName)
+// loop through the array of events.
+// for each event create an li tag with a heading tag & two p tags.
+// update text of heading and p-tags with event name, description? and date.
+// append the list item to our emply list in html
+// }
+
+
+dropDown.addEventListener("change", function () {
+    getApi(api_url).then(function (info) {
         console.log(info)
         info.forEach(team => {
-          if (team.Name === dropDown.value) {
-              teamData(team)
-          } 
+            if (team.Name === dropDown.value) {
+                teamData(team)
+                // let widgetTeam = document.querySelector('.widget')
+                // widgetTeam.setAttribute('w-keyword', team.Name)
+            }
         });
     })
+// getTicketmaster()
     
-    // getApi(api_url2).then(functions(info){
+// getApi(api_url2).then(functions(info){
     //     info.
     //     //update image src = team logo
     // })
 })
+
 let teamAbr = document.getElementById("teamAbr")
 
 
@@ -23,7 +37,7 @@ let teamAbr = document.getElementById("teamAbr")
 
 function teamData(team) {
     let h2Team = `<h2>${team.Name} - ${team.Team}</h2>`
-        document.getElementById("teamAbr").innerHTML = h2Team
+    document.getElementById("teamAbr").innerHTML = h2Team
 
     let tableColumns = `<tr>
         <th>Games</th>
@@ -50,12 +64,13 @@ function teamData(team) {
         </tr>`;
     tableColumns += stats
     document.getElementById("teamStats").innerHTML = tableColumns;
+    // getTicketmaster(team.Name)
 }
 
 
 function getApi(url) {
-    return fetch(url).then(function(response){
-       return response.json()
+    return fetch(url).then(function (response) {
+        return response.json()
     })
 }
 
@@ -169,19 +184,19 @@ function changeBodyBg() {
         document.getElementById("header").style.backgroundColor = "#63727A"
     } else if (dropDown.value == "San Antonio Spurs") {
         document.getElementById("main-box").style.backgroundColor = "#C4CED4"
-        document.body.style.backgroundColor = "#000000" 
-        document.getElementById("header").style.backgroundColor = "#C4CED4"  
+        document.body.style.backgroundColor = "#000000"
+        document.getElementById("header").style.backgroundColor = "#C4CED4"
     } else if (dropDown.value == "Toronto Raptors") {
         document.getElementById("main-box").style.backgroundColor = "#BA0C2F"
-        document.body.style.backgroundColor = "#000000"  
-        document.getElementById("header").style.backgroundColor = "#A1A1A4" 
+        document.body.style.backgroundColor = "#000000"
+        document.getElementById("header").style.backgroundColor = "#A1A1A4"
     } else if (dropDown.value == "Utah Jazz") {
         document.getElementById("main-box").style.backgroundColor = "#002B5C"
-        document.body.style.backgroundColor = "#F9A01B"  
-        document.getElementById("header").style.backgroundColor = "#00471B" 
+        document.body.style.backgroundColor = "#F9A01B"
+        document.getElementById("header").style.backgroundColor = "#00471B"
     } else if (dropDown.value == "Washington Wizards") {
         document.getElementById("main-box").style.backgroundColor = "#002B5C"
-        document.body.style.backgroundColor = "#C4CED4"   
+        document.body.style.backgroundColor = "#C4CED4"
         document.getElementById("header").style.backgroundColor = "#E31837"
     }
 }
