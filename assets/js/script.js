@@ -7,6 +7,8 @@ dropDown.addEventListener("change", function(){
         info.forEach(team => {
           if (team.Name === dropDown.value) {
               teamData(team)
+              let widgetTeam = document.querySelector('.widget')
+              widgetTeam.setAttribute('w-keyword', team.Name)
           } 
         });
     })
