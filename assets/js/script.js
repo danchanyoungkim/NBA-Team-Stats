@@ -61,10 +61,37 @@ function getApi(url) {
 
 // Changes background colors according to team.
 function changeBodyBg() {
+
+
+
+
+
+    function colorChange(mainColor, bodyColor, headerColor) {
+        document.getElementById("main-box").style.backgroundColor = mainColor
+        document.body.style.backgroundColor = bodyColor
+        document.getElementById("header").style.backgroundColor = headerColor
+    }
+
+
+
+  //  switch(dropDown.value) {
+    //    case "Atlanta Hawks":
+      //      colorChange("#E03A3E","#26282A","#C1D32F");
+       //     break;
+      //  case "Atlanta Hawks":
+        //    colorChange("#E03A3E","#26282A","#C1D32F");
+        //    break;
+    }
+
+
+
+
+
     if (dropDown.value == "Atlanta Hawks") {
-        document.getElementById("main-box").style.backgroundColor = "#E03A3E"
-        document.body.style.backgroundColor = "#26282A"
-        document.getElementById("header").style.backgroundColor = "#C1D32F"
+        colorChange("#E03A3E","#26282A","#C1D32F")
+       // document.getElementById("main-box").style.backgroundColor = "#E03A3E"
+       // document.body.style.backgroundColor = "#26282A"
+      //  document.getElementById("header").style.backgroundColor = "#C1D32F"
     } else if (dropDown.value == "Boston Celtics") {
         document.getElementById("main-box").style.backgroundColor = "#007A33"
         document.body.style.backgroundColor = "#BA9653"
