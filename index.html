@@ -14,15 +14,15 @@
         <!-- testing bulma -->
         <h1 class='header'>NBA Team Stats and Information</h1>
     </header>
-
     <main>
         <div class='tile'>
             <div class="column auto">
                 <p class="has-text-centered"> Select your team: </p>
                 <!-- id 'teamList' will be a function-->
+                <!-- <table id='teamStats'></table> -->
                 <select class="teamList" id="teamList" onchange="getApi()">
                     <option> ------ Select Your Team ------ </option>
-                    <option>ATL - Atlanta Hawks</option>
+                    <option value='Atlanta Hawks' >ATL - Atlanta Hawks</option>
                     <option>BOS - Boston Celtics</option>
                     <option>BKN - Brooklyn Nets</option>
                     <option>CHA - Charlotte Hornets</option>
@@ -61,7 +61,7 @@
             <div class='tile is-3' style='background-color:yellow; height: 700px;'>widget</div>
         </div>
     </main>
-
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
