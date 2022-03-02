@@ -1,6 +1,7 @@
 const api_url = "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4"
 // const api_url2 = 245345
 let dropDown = document.getElementById("dropDown")
+
 dropDown.addEventListener("change", function(){
     getApi(api_url).then(function(info){
         console.log(info)
@@ -17,9 +18,6 @@ dropDown.addEventListener("change", function(){
     // })
 })
 let teamAbr = document.getElementById("teamAbr")
-
-
-
 
 function teamData(team) {
     let h2Team = `<h2>${team.Name} - ${team.Team}</h2>`
@@ -51,7 +49,6 @@ function teamData(team) {
     tableColumns += stats
     document.getElementById("teamStats").innerHTML = tableColumns;
 }
-
 
 function getApi(url) {
     return fetch(url).then(function(response){
