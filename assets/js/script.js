@@ -70,6 +70,8 @@ function getApi(url) {
     })
 }
 
+
+
 // Changes background colors according to team.
 function changeBodyBg() {
     if (dropDown.value == "Atlanta Hawks") {
