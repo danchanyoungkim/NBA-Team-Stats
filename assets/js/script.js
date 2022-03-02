@@ -50,3 +50,7 @@ function getApi() {
     })
 }
 
+
+
+let widgets = document.querySelector("#widgets");
+console.log(widgets);
