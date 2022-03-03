@@ -14,11 +14,11 @@
         <h1 id = "heading" class='heading is-size-2'>NBA Team Stats and Information</h1>
     </header>
     <main>
-        <div class='tile'>
-                <div class = "column auto">
+        <div class='tile column auto'>
+                <div >
                     <p class = "has-text-centered"> Select your team: </p>
                     <!-- id 'teamList' will be a function-->
-                    <select id = "dropDown" onchange="getApi(), changeBodyBg(), inputImage()">
+                    <select id = "dropDown">
                       <option> ------ Select Your Team ------ </option>
                       <option value="Atlanta Hawks">Atlanta Hawks</option>
                       <option value="Boston Celtics">Boston Celtics</option>
@@ -51,12 +51,6 @@
                       <option value="Utah Jazz">Utah Jazz</option>
                       <option value="Washington Wizards">Washington Wizards</option>
                     </select>
-
-                <div>
-                    <ul>
-                        
-                    </ul>
-                </div>
                 
             </div>
             <div id="main-box" class='column is-two-thirds column is-center'>
@@ -69,8 +63,16 @@
                 <table id='teamStats' class="box table is-bordered has-text-centered"></table>
                 <table id='playerList' class="box table is-bordered has-text-centered"></table>
             </div>
-            <div class='column auto' style='display: flex; height: 700px;'></div> 
+            <!-- <div class='column auto' style='display: flex; height: 700px;'></div>  -->
         </div>
+
+        <div class = ' column auto'>
+            <ul id= 'event-list'>
+                
+            </ul>
+        </div>
+
+        
     </main>
     <script src="./assets/js/script.js"></script>
 </body>
