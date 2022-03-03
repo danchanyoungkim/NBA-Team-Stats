@@ -6,6 +6,7 @@ let api_key = "l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let ticketMasterUrl =
   "https://app.ticketmaster.com/discovery/v2/events.json?keyword=Chicago%20Bulls&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let eventList = document.getElementById("event-list");
+let playerList = document.getElementById("player-list")
 
 // function getTicketmaster(teamName){
 // fetch ticket master api and get all events for selected team.(teamName)
@@ -96,57 +97,54 @@ function teamData(team) {
     tableColumns += stats
     document.getElementById("teamStats").innerHTML = tableColumns;
 
+    
     // List of players per team selected in dropdown.
     const apiUrl3 = "https://api.sportsdata.io/v3/nba/scores/json/Players/"+(team.Team)+"?key=13be218e384a4c4db81b4be3782d2c16"
         getApi(apiUrl3).then(function (data) {
-            console.log(data)
+            playerList.innerHTML = "";
+            let playerColumns2 = document.createElement("tr");
+            let players = document.createElement("th");
+            let playerNum = document.createElement("th");
+            let playerPos = document.createElement("th");
+            let playerHeight = document.createElement("th");
+            let playerWeight = document.createElement("th");
+            let playerBd = document.createElement("th");
+            let playerExp = document.createElement("th");
+            let playerCollege = document.createElement("th");
+            let playerSalary = document.createElement("th");
+            players.textContent = "Player"
+            playerNum.textContent = "#"
+            playerPos.textContent = "Pos"
+            playerHeight.textContent = "Height"
+            playerWeight.textContent = "Weight"
+            playerBd.textContent = "Birthdate"
+            playerExp.textContent = "Exp"
+            playerCollege.textContent = "College"
+            playerSalary.textContent = "Salary"
+            playerColumns2.append(players, playerNum, playerPos, playerHeight, playerWeight, playerBd, playerExp, playerCollege, playerSalary)
+            playerList.append(playerColumns2);
             data.forEach(player => {
-                /*let playerColumns = `<tr>
-                    <th>Player</th>
-                    <th>#</th>
-                    <th>Pos</th>
-                    <th>Height</th>
-                    <th>Weight</th>
-                    <th>BirthDate</th>
-                    <th>Exp</th>
-                    <th>College</th>
-                    <th>Salary</th>
-                </tr>`;*/
-                let playerColumns2 = document.createElement("tr");
-                let players = document.createElement("th");
-                let playerNum = document.createElement("th");
-                let playerPos = document.createElement("th");
-                let playerHeight = document.createElement("th");
-                let playerWeight = document.createElement("th");
-                let playerBd = document.createElement("th");
-                let playerExp = document.createElement("th");
-                let playerCollege = document.createElement("th");
-                let playerSalary = document.createElement("th");
-                players.textContent = "Player"
-                playerNum.textContent = "#"
-                playerPos.textContent = "Pos"
-                playerHeight.textContent = "Height"
-                playerWeight.textContent = "Weight"
-                playerBd.textContent = "Birthdate"
-                playerExp.textContent = "Exp"
-                playerCollege.textContent = "College"
-                playerSalary.textContent = "Salary"
-                playerColumns2.append(players, playerNum, playerPos, playerHeight, playerWeight, playerBd, playerExp, playerCollege, playerSalary)
-
-                //CHECKPOINT
-
-                /*removeLastCharacters(player.BirthDate)
-                let playerStats = `<tr>
-                    <td>${player.YahooName}</td>
-                    <td id = "player-jersey">${player.Jersey}</td>
-                    <td>${player.Position}</td>
-                    <td>${toFeetandInch(player.Height)}</td>
-                    <td>${player.Weight}</td>
-                    <td>${player.BirthDate}</td>
-                    <td id = "player-experience">${player.Experience}</td>
-                    <td>${player.College}</td>
-                    <td id = "player-salary">${player.Salary}</td>
-                </tr>`;*/
+                // If value equals null for either jersey or salary, then display text "N/A".
+                let nullJersey = player.Jersey;
+                let nullSalary = player.Salary;
+                    if (nullJersey || nullSalary == null) {
+                        // If true, then "N/A" will replace the value in the table.
+                        player.Jersey = "N/A";
+                        player.Salary = "N/A";
+                    };
+                
+                // If value equals 0 for years of experience in NBA, then display text "Rookie".
+                let numYear = player.Experience;
+                    if (numYear == 0) {
+                        player.Experience = "Rookie";
+                    };
+    
+                // Removes last 9 characters (unneeded) for player.BirthDate from apiUrl3.
+                player.BirthDate = player.BirthDate.substring(0,player.BirthDate.length-9);
+                
+                // Converts inches to feet and inches for player.Height from apiUrl13.
+                player.Height = (parseInt(player.Height/12) + "'" + Math.round(player.Height%12,1)+'"')
+                
                 let playerColumns3 = document.createElement("tr");
                 let statName = document.createElement("td");
                 let statNum = document.createElement("td");
@@ -157,46 +155,19 @@ function teamData(team) {
                 let statExp = document.createElement("td");
                 let statCollege = document.createElement("td");
                 let statSalary = document.createElement("td");
-                statName.textContent = "${player.YahooName}"
-                statNum.textContent = "${player.YahooName}"
-                statPos.textContent = "${player.YahooName}"
-                statHeight.textContent = "${player.YahooName}"
-                statWeight.textContent = "${player.YahooName}"
-                statBd.textContent = "${player.YahooName}"
-                statExp.textContent = "${player.YahooName}"
-                statCollege.textContent = "${player.YahooName}"
-                statSalary.textContent = "${player.YahooName}"
+                statName.textContent = `${player.YahooName}`
+                statNum.textContent = `${player.Jersey}`
+                statPos.textContent = `${player.Position}`
+                statHeight.textContent = `${player.Height}`
+                statWeight.textContent = `${player.Weight}`
+                statBd.textContent = `${player.BirthDate}`
+                statExp.textContent = `${player.Experience}`
+                statCollege.textContent = `${player.College}`
+                statSalary.textContent = `${player.Salary}`
                 playerColumns3.append(statName, statNum, statPos, statHeight, statWeight, statBd, statExp, statCollege, statSalary)
 
-            playerColumns2 += playerColumns3
-            let playerDiv = document.createElement("div")
-            playerDiv.append(playerColumns2)
-            document.getElementById("player-list").append(playerDiv) 
+                playerList.append(playerColumns3) 
             
-            // If value equals null for either jersey or salary, then display text "N/A".
-            let nullJersey = player.Jersey;
-            let nullSalary = player.Salary;
-                if (nullJersey || nullSalary == null) {
-                    // If true, then "N/A" will replace the value in the table.
-                    document.getElementById("player-jersey").innerHTML = "N/A";
-                    document.getElementById("player-salary").innerHTML = "N/A";
-                };
-            
-            // If value equals 0 for years of experience in NBA, then display text "Rookie".
-            let numYear = player.Experience;
-                if (numYear == 0) {
-                    document.getElementById("player-experience").innerHTML = "Rookie";
-                };
-
-            // Removes last 9 characters (unneeded) for player.BirthDate from apiUrl3.
-            function removeLastCharacters() {
-                player.BirthDate = player.BirthDate.substring(0,player.BirthDate.length-9);
-            };
-            
-            // Converts inches to feet and inches for player.Height from apiUrl13.
-            function toFeetandInch(){
-                return (parseInt(player.Height/12) + "'" + Math.round(player.Height%12,1)+'"')
-            };
         });
     });
 }
