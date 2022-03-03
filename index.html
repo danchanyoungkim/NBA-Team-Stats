@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-    <link rel='stylesheet' href='./assets/css/style.css'>
-    <title>NBA Team Stats</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  <link rel='stylesheet' href='./assets/css/style.css'>
+  <title>NBA Team Stats</title>
+</head>
 
 <body>
     <header id = "header" >
@@ -52,11 +52,15 @@
                 </select> 
             </div>
             <div id="main-box" class='column is-two-thirds column is-center'>
-                <h2 id="teamAbr" class = "has-text-white is-size-3"></h2>    
+                <div class = "is-flex">    
+                    <figure class = "image is-128x128">
+                        <img id = "image" src = "">
+                    </figure>
+                    <h2 id="teamAbr" class = "has-text-white is-size-3"></h2>    
+                </div>
                 <table id='teamStats' class="box table is-bordered has-text-centered"></table>
                 <table id='player-list' class="box table is-bordered has-text-centered"></table>
             </div>
-            <!-- <div class='column auto' style='display: flex; height: 700px;'></div>  -->
             <div class = ' column auto'>
                 <ul id= 'event-list'>
                     
