@@ -11,6 +11,14 @@ header {
     height: 10%;
 }
 
+header h1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: aliceblue;
+    font-size: 125%;
+}
+
 .court {
     height: 50%;
     position:relative;
@@ -50,9 +58,3 @@ table {
     margin-left: 12%; 
 }
 
-/* .mtable {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex: wrap;
-} */
