@@ -13,13 +13,12 @@
     <header id = "header" >
         <img class="court=" src="./assets/images/court.png">
         <div class = "is-flex">    
-            <img class="nba image is-128x128" id = "image" src="./assets/images/NBA Logo.png">
+            <img class="nba image is-128x128" id = "image" src="./assets/images/NBA_Logo.png">
         </div>
     </header>
     <main>
         <div class='tile'>
             <div class = "column auto">
-                    <!-- id 'teamList' will be a function-->
                 <p class = "has-text-centered"> Select your team: </p>
                 <select class = "drop-down" id = "dropDown" onchange="getApi(), changeBodyBg(), inputImage()">
                     <option> ------ Select Your Team ------ </option>
@@ -53,26 +52,19 @@
                     <option value="Toronto Raptors">Toronto Raptors</option>
                     <option value="Utah Jazz">Utah Jazz</option>
                     <option value="Washington Wizards">Washington Wizards</option>
-                </select>
-
-                <div>
-                    <ul>
-                        
-                    </ul>
-                </div>    
+                </select> 
             </div>
             <div id="main-box" class='column is-two-thirds column is-center'>
                 <h2 id="teamAbr" class = "has-text-white is-size-3"></h2>    
                 <table id='teamStats' class="box table is-bordered has-text-centered"></table>
                 <table id='player-list' class="box table is-bordered has-text-centered"></table>
             </div>
-        </div>
-
-        <div class = ' column auto'>
-            <ul id= 'event-list'>
-                
-            </ul>
-            <div class='column auto' style='display: flex; height: 850px;'></div> 
+            <!-- <div class='column auto' style='display: flex; height: 700px;'></div>  -->
+            <div class = ' column auto'>
+                <ul id= 'event-list'>
+                    
+                </ul>
+            </div>
         </div>
     </main>
     <script src="./assets/js/script.js"></script>
