@@ -24,7 +24,14 @@ p {
 }
 
 .nba {
-    position:absolute;
+    position: absolute;
     top: 134px;
     left: 188px;
+}
+
+#event-list {
+    color: black;
+    background-color: whitesmoke;
+    border: black solid 2px;
+    border-radius: 10px;
 }

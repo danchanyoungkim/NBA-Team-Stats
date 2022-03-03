@@ -6,7 +6,7 @@ let api_key = "l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let ticketMasterUrl =
   "https://app.ticketmaster.com/discovery/v2/events.json?keyword=Chicago%20Bulls&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let eventList = document.getElementById("event-list");
-let playerList = document.getElementById("player-list")
+let playerList = document.getElementById("player-list");
 
 // function getTicketmaster(teamName){
 // fetch ticket master api and get all events for selected team.(teamName)
@@ -94,82 +94,110 @@ function teamData(team) {
         <td>${team.Steals}</td>
         <td>${team.BlockedShots}</td>
         </tr>`;
-    tableColumns += stats
-    document.getElementById("teamStats").innerHTML = tableColumns;
+  tableColumns += stats;
+  document.getElementById("teamStats").innerHTML = tableColumns;
 
-    
-    // List of players per team selected in dropdown.
-    const apiUrl3 = "https://api.sportsdata.io/v3/nba/scores/json/Players/"+(team.Team)+"?key=13be218e384a4c4db81b4be3782d2c16"
-        getApi(apiUrl3).then(function (data) {
-            playerList.innerHTML = "";
-            let playerColumns2 = document.createElement("tr");
-            let players = document.createElement("th");
-            let playerNum = document.createElement("th");
-            let playerPos = document.createElement("th");
-            let playerHeight = document.createElement("th");
-            let playerWeight = document.createElement("th");
-            let playerBd = document.createElement("th");
-            let playerExp = document.createElement("th");
-            let playerCollege = document.createElement("th");
-            let playerSalary = document.createElement("th");
-            players.textContent = "Player"
-            playerNum.textContent = "#"
-            playerPos.textContent = "Pos"
-            playerHeight.textContent = "Height"
-            playerWeight.textContent = "Weight"
-            playerBd.textContent = "Birthdate"
-            playerExp.textContent = "Exp"
-            playerCollege.textContent = "College"
-            playerSalary.textContent = "Salary"
-            playerColumns2.append(players, playerNum, playerPos, playerHeight, playerWeight, playerBd, playerExp, playerCollege, playerSalary)
-            playerList.append(playerColumns2);
-            data.forEach(player => {
-                // If value equals null for either jersey or salary, then display text "N/A".
-                let nullJersey = player.Jersey;
-                let nullSalary = player.Salary;
-                    if (nullJersey || nullSalary == null) {
-                        // If true, then "N/A" will replace the value in the table.
-                        player.Jersey = "N/A";
-                        player.Salary = "N/A";
-                    };
-                
-                // If value equals 0 for years of experience in NBA, then display text "Rookie".
-                let numYear = player.Experience;
-                    if (numYear == 0) {
-                        player.Experience = "Rookie";
-                    };
-    
-                // Removes last 9 characters (unneeded) for player.BirthDate from apiUrl3.
-                player.BirthDate = player.BirthDate.substring(0,player.BirthDate.length-9);
-                
-                // Converts inches to feet and inches for player.Height from apiUrl13.
-                player.Height = (parseInt(player.Height/12) + "'" + Math.round(player.Height%12,1)+'"')
-                
-                let playerColumns3 = document.createElement("tr");
-                let statName = document.createElement("td");
-                let statNum = document.createElement("td");
-                let statPos = document.createElement("td");
-                let statHeight = document.createElement("td");
-                let statWeight = document.createElement("td");
-                let statBd = document.createElement("td");
-                let statExp = document.createElement("td");
-                let statCollege = document.createElement("td");
-                let statSalary = document.createElement("td");
-                statName.textContent = `${player.YahooName}`
-                statNum.textContent = `${player.Jersey}`
-                statPos.textContent = `${player.Position}`
-                statHeight.textContent = `${player.Height}`
-                statWeight.textContent = `${player.Weight}`
-                statBd.textContent = `${player.BirthDate}`
-                statExp.textContent = `${player.Experience}`
-                statCollege.textContent = `${player.College}`
-                statSalary.textContent = `${player.Salary}`
-                playerColumns3.append(statName, statNum, statPos, statHeight, statWeight, statBd, statExp, statCollege, statSalary)
+  // List of players per team selected in dropdown.
+  const apiUrl3 =
+    "https://api.sportsdata.io/v3/nba/scores/json/Players/" +
+    team.Team +
+    "?key=13be218e384a4c4db81b4be3782d2c16";
+  getApi(apiUrl3).then(function (data) {
+    playerList.innerHTML = "";
+    let playerColumns2 = document.createElement("tr");
+    let players = document.createElement("th");
+    let playerNum = document.createElement("th");
+    let playerPos = document.createElement("th");
+    let playerHeight = document.createElement("th");
+    let playerWeight = document.createElement("th");
+    let playerBd = document.createElement("th");
+    let playerExp = document.createElement("th");
+    let playerCollege = document.createElement("th");
+    let playerSalary = document.createElement("th");
+    players.textContent = "Player";
+    playerNum.textContent = "#";
+    playerPos.textContent = "Pos";
+    playerHeight.textContent = "Height";
+    playerWeight.textContent = "Weight";
+    playerBd.textContent = "Birthdate";
+    playerExp.textContent = "Exp";
+    playerCollege.textContent = "College";
+    playerSalary.textContent = "Salary";
+    playerColumns2.append(
+      players,
+      playerNum,
+      playerPos,
+      playerHeight,
+      playerWeight,
+      playerBd,
+      playerExp,
+      playerCollege,
+      playerSalary
+    );
+    playerList.append(playerColumns2);
+    data.forEach((player) => {
+      // If value equals null for either jersey or salary, then display text "N/A".
+      let nullJersey = player.Jersey;
+      let nullSalary = player.Salary;
+      if (nullJersey || nullSalary == null) {
+        // If true, then "N/A" will replace the value in the table.
+        player.Jersey = "N/A";
+        player.Salary = "N/A";
+      }
 
-                playerList.append(playerColumns3) 
-            
-        });
+      // If value equals 0 for years of experience in NBA, then display text "Rookie".
+      let numYear = player.Experience;
+      if (numYear == 0) {
+        player.Experience = "Rookie";
+      }
+
+      // Removes last 9 characters (unneeded) for player.BirthDate from apiUrl3.
+      player.BirthDate = player.BirthDate.substring(
+        0,
+        player.BirthDate.length - 9
+      );
+
+      // Converts inches to feet and inches for player.Height from apiUrl13.
+      player.Height =
+        parseInt(player.Height / 12) +
+        "'" +
+        Math.round(player.Height % 12, 1) +
+        '"';
+
+      let playerColumns3 = document.createElement("tr");
+      let statName = document.createElement("td");
+      let statNum = document.createElement("td");
+      let statPos = document.createElement("td");
+      let statHeight = document.createElement("td");
+      let statWeight = document.createElement("td");
+      let statBd = document.createElement("td");
+      let statExp = document.createElement("td");
+      let statCollege = document.createElement("td");
+      let statSalary = document.createElement("td");
+      statName.textContent = `${player.YahooName}`;
+      statNum.textContent = `${player.Jersey}`;
+      statPos.textContent = `${player.Position}`;
+      statHeight.textContent = `${player.Height}`;
+      statWeight.textContent = `${player.Weight}`;
+      statBd.textContent = `${player.BirthDate}`;
+      statExp.textContent = `${player.Experience}`;
+      statCollege.textContent = `${player.College}`;
+      statSalary.textContent = `${player.Salary}`;
+      playerColumns3.append(
+        statName,
+        statNum,
+        statPos,
+        statHeight,
+        statWeight,
+        statBd,
+        statExp,
+        statCollege,
+        statSalary
+      );
+
+      playerList.append(playerColumns3);
     });
+  });
 }
 
 function getApi(url) {
