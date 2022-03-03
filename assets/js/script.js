@@ -66,7 +66,7 @@ function teamData(team) {
         getApi(apiUrl3).then(function (data) {
             console.log(data)
             data.forEach(player => {
-                let playerColumns = `<tr>
+                /*let playerColumns = `<tr>
                     <th>Player</th>
                     <th>#</th>
                     <th>Pos</th>
@@ -76,10 +76,31 @@ function teamData(team) {
                     <th>Exp</th>
                     <th>College</th>
                     <th>Salary</th>
-                </tr>`;
-                
-        
-                removeLastCharacters(player.BirthDate)
+                </tr>`;*/
+                let playerColumns2 = document.createElement("tr");
+                let players = document.createElement("th");
+                let playerNum = document.createElement("th");
+                let playerPos = document.createElement("th");
+                let playerHeight = document.createElement("th");
+                let playerWeight = document.createElement("th");
+                let playerBd = document.createElement("th");
+                let playerExp = document.createElement("th");
+                let playerCollege = document.createElement("th");
+                let playerSalary = document.createElement("th");
+                players.textContent = "Player"
+                playerNum.textContent = "#"
+                playerPos.textContent = "Pos"
+                playerHeight.textContent = "Height"
+                playerWeight.textContent = "Weight"
+                playerBd.textContent = "Birthdate"
+                playerExp.textContent = "Exp"
+                playerCollege.textContent = "College"
+                playerSalary.textContent = "Salary"
+                playerColumns2.append(players, playerNum, playerPos, playerHeight, playerWeight, playerBd, playerExp, playerCollege, playerSalary)
+
+                //CHECKPOINT
+
+                /*removeLastCharacters(player.BirthDate)
                 let playerStats = `<tr>
                     <td>${player.YahooName}</td>
                     <td id = "player-jersey">${player.Jersey}</td>
@@ -90,9 +111,32 @@ function teamData(team) {
                     <td id = "player-experience">${player.Experience}</td>
                     <td>${player.College}</td>
                     <td id = "player-salary">${player.Salary}</td>
-                </tr>`;
-            playerColumns += playerStats
-            document.getElementById("player-list").innerHTML = playerColumns;
+                </tr>`;*/
+                let playerColumns3 = document.createElement("tr");
+                let statName = document.createElement("td");
+                let statNum = document.createElement("td");
+                let statPos = document.createElement("td");
+                let statHeight = document.createElement("td");
+                let statWeight = document.createElement("td");
+                let statBd = document.createElement("td");
+                let statExp = document.createElement("td");
+                let statCollege = document.createElement("td");
+                let statSalary = document.createElement("td");
+                statName.textContent = "${player.YahooName}"
+                statNum.textContent = "${player.YahooName}"
+                statPos.textContent = "${player.YahooName}"
+                statHeight.textContent = "${player.YahooName}"
+                statWeight.textContent = "${player.YahooName}"
+                statBd.textContent = "${player.YahooName}"
+                statExp.textContent = "${player.YahooName}"
+                statCollege.textContent = "${player.YahooName}"
+                statSalary.textContent = "${player.YahooName}"
+                playerColumns3.append(statName, statNum, statPos, statHeight, statWeight, statBd, statExp, statCollege, statSalary)
+
+            playerColumns2 += playerColumns3
+            let playerDiv = document.createElement("div")
+            playerDiv.append(playerColumns2)
+            document.getElementById("player-list").append(playerDiv) 
             
             // If value equals null for either jersey or salary, then display text "N/A".
             let nullJersey = player.Jersey;
