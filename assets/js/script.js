@@ -32,13 +32,9 @@ dropDown.addEventListener("change", function () {
 
 let teamAbr = document.getElementById("teamAbr")
 
-
-
-
 function teamData(team) {
     let h2Team = `<h2>${team.Name} - ${team.Team}</h2>`
     document.getElementById("teamAbr").innerHTML = h2Team
-
     let tableColumns = `<tr>
         <th>Games</th>
         <th>Wins</th>
@@ -64,9 +60,21 @@ function teamData(team) {
         </tr>`;
     tableColumns += stats
     document.getElementById("teamStats").innerHTML = tableColumns;
-    // getTicketmaster(team.Name)
 }
+    // getTicketmaster(team.Name)
+    
+    /* Building player display from an api
+    const apiUrl3 = "https://api.sportsdata.io/v3/nba/scores/json/Players/"+(team.Team)+"?key=13be218e384a4c4db81b4be3782d2c16"
+    fetch(apiUrl3)
+        .then(response => response.json())
+        .then(data => console.log(data));
+        
+    //for (leti = 0; i < data.length; i++) {
+      //  console.log (data.FirstName);
+    }
 
+
+//}*/
 
 function getApi(url) {
     return fetch(url).then(function (response) {
@@ -74,156 +82,117 @@ function getApi(url) {
     })
 }
 
-// Changes background colors according to team.
+
+
+
+// Changes from NBA logo to team logo depending on dropdown chosen.
+function inputImage() {
+    document.getElementById("image").src="./assets/images/" + dropDown.value + ".png";
+}
+
+// Changes multiple background colors according to team selected.
 function changeBodyBg() {
-
-
-
-
-
-    function colorChange(mainColor, bodyColor, headerColor) {
+    function colorChange(mainColor, bodyColor, headerColor,headingColor) {
+        // Color for middle column box with stats.
         document.getElementById("main-box").style.backgroundColor = mainColor
+        // Color for whole page background.
         document.body.style.backgroundColor = bodyColor
+        // Color for header background.
         document.getElementById("header").style.backgroundColor = headerColor
+        // Color for header title in case text becomes unreadable due to "header" color.
+        document.getElementById("heading").style.color = headingColor  
     }
-
-
-
-  //  switch(dropDown.value) {
-    //    case "Atlanta Hawks":
-      //      colorChange("#E03A3E","#26282A","#C1D32F");
-       //     break;
-      //  case "Atlanta Hawks":
-        //    colorChange("#E03A3E","#26282A","#C1D32F");
-        //    break;
-    }
-
-
-
-
-
-    if (dropDown.value == "Atlanta Hawks") {
-        colorChange("#E03A3E","#26282A","#C1D32F")
-       // document.getElementById("main-box").style.backgroundColor = "#E03A3E"
-       // document.body.style.backgroundColor = "#26282A"
-      //  document.getElementById("header").style.backgroundColor = "#C1D32F"
-    } else if (dropDown.value == "Boston Celtics") {
-        document.getElementById("main-box").style.backgroundColor = "#007A33"
-        document.body.style.backgroundColor = "#BA9653"
-        document.getElementById("header").style.backgroundColor = "#963821"
-    } else if (dropDown.value == "Brooklyn Nets") {
-        document.getElementById("main-box").style.backgroundColor = "#000000"
-        document.body.style.backgroundColor = "#FFFFFF"
-        document.getElementById("header").style.backgroundColor = "#FFFFFF"
-    } else if (dropDown.value == "Charlotte Hornets") {
-        document.getElementById("main-box").style.backgroundColor = "#1D1160"
-        document.body.style.backgroundColor = "#A1A1A4"
-        document.getElementById("header").style.backgroundColor = "#00788C"
-    } else if (dropDown.value == "Chicago Bulls") {
-        document.getElementById("main-box").style.backgroundColor = "#CE1141"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#CE1141"
-    } else if (dropDown.value == "Cleveland Cavaliers") {
-        document.getElementById("main-box").style.backgroundColor = "#860038"
-        document.body.style.backgroundColor = "#FDBB30"
-        document.getElementById("header").style.backgroundColor = "#860038"
-    } else if (dropDown.value == "Dallas Mavericks") {
-        document.getElementById("main-box").style.backgroundColor = "#00538C"
-        document.body.style.backgroundColor = "#B8C4CA"
-        document.getElementById("header").style.backgroundColor = "#002B5E"
-    } else if (dropDown.value == "Denver Nuggets") {
-        document.getElementById("main-box").style.backgroundColor = "#0E2240"
-        document.body.style.backgroundColor = "#1D428A"
-        document.getElementById("header").style.backgroundColor = "#FEC524"
-    } else if (dropDown.value == "Detroit Pistons") {
-        document.getElementById("main-box").style.backgroundColor = "#C8102E"
-        document.body.style.backgroundColor = "#BEC0C2"
-        document.getElementById("header").style.backgroundColor = "#1D42BA"
-    } else if (dropDown.value == "Golden State Warriors") {
-        document.getElementById("main-box").style.backgroundColor = "#FFC72C"
-        document.body.style.backgroundColor = "#1D428A"
-        document.getElementById("header").style.backgroundColor = "#FFC72C"
-    } else if (dropDown.value == "Houston Rockets") {
-        document.getElementById("main-box").style.backgroundColor = "#CE1141"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#C4CED4"
-    } else if (dropDown.value == "Indiana Pacers") {
-        document.getElementById("main-box").style.backgroundColor = "#FDBB30"
-        document.body.style.backgroundColor = "#BEC0C2"
-        document.getElementById("header").style.backgroundColor = "#C1D32F"
-    } else if (dropDown.value == "Los Angeles Clippers") {
-        document.getElementById("main-box").style.backgroundColor = "#C8102E"
-        document.body.style.backgroundColor = "#BEC0C2"
-        document.getElementById("header").style.backgroundColor = "#1D428A"
-    } else if (dropDown.value == "Los Angeles Lakers") {
-        document.getElementById("main-box").style.backgroundColor = "#552583"
-        document.body.style.backgroundColor = "#FDB927"
-        document.getElementById("header").style.backgroundColor = "#000000"
-        document.getElementById("heading").style.color = "#FFFFFF"
-    } else if (dropDown.value == "Memphis Grizzlies") {
-        document.getElementById("main-box").style.backgroundColor = "#5D76A9"
-        document.body.style.backgroundColor = "#F5B112"
-        document.getElementById("header").style.backgroundColor = "#12173F"
-    } else if (dropDown.value == "Miami Heat") {
-        document.getElementById("main-box").style.backgroundColor = "#98002E"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#98002E"
-    } else if (dropDown.value == "Milwaukee Bucks") {
-        document.getElementById("main-box").style.backgroundColor = "#00471B"
-        document.body.style.backgroundColor = "#0077C0"
-        document.getElementById("header").style.backgroundColor = "#EEE1C6"
-    } else if (dropDown.value == "Minnesota Timberwolves") {
-        document.getElementById("main-box").style.backgroundColor = "#0C2340"
-        document.body.style.backgroundColor = "#9EA2A2"
-        document.getElementById("header").style.backgroundColor = "#236192"
-    } else if (dropDown.value == "New Orleans Pelicans") {
-        document.getElementById("main-box").style.backgroundColor = "#0C2340"
-        document.body.style.backgroundColor = "#85714D"
-        document.getElementById("header").style.backgroundColor = "#C8102E"
-    } else if (dropDown.value == "New York Knicks") {
-        document.getElementById("main-box").style.backgroundColor = "#006BB6"
-        document.body.style.backgroundColor = "#F58426"
-        document.getElementById("header").style.backgroundColor = "#BEC0C2"
-    } else if (dropDown.value == "Oklahoma City Thunder") {
-        document.getElementById("main-box").style.backgroundColor = "#007AC1"
-        document.body.style.backgroundColor = "#002D62"
-        document.getElementById("header").style.backgroundColor = "#EF3B24"
-    } else if (dropDown.value == "Orlando Magic") {
-        document.getElementById("main-box").style.backgroundColor = "#0077C0"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#C4CED4"
-    } else if (dropDown.value == "Philadelphia 76ers") {
-        document.getElementById("main-box").style.backgroundColor = "#006BB6"
-        document.body.style.backgroundColor = "#002B5C"
-        document.getElementById("header").style.backgroundColor = "#ED174C"
-    } else if (dropDown.value == "Phoenix Suns") {
-        document.getElementById("main-box").style.backgroundColor = "#1D1160"
-        document.body.style.backgroundColor = "#E56020"
-        document.getElementById("header").style.backgroundColor = "#000000"
-        document.getElementById("heading").style.color = "#FFFFFF"
-    } else if (dropDown.value == "Portland Trail Blazers") {
-        document.getElementById("main-box").style.backgroundColor = "#E03A3E"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#E03A3E"
-    } else if (dropDown.value == "Sacramento Kings") {
-        document.getElementById("main-box").style.backgroundColor = "#5A2D81"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#63727A"
-    } else if (dropDown.value == "San Antonio Spurs") {
-        document.getElementById("main-box").style.backgroundColor = "#C4CED4"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#C4CED4"
-    } else if (dropDown.value == "Toronto Raptors") {
-        document.getElementById("main-box").style.backgroundColor = "#BA0C2F"
-        document.body.style.backgroundColor = "#000000"
-        document.getElementById("header").style.backgroundColor = "#A1A1A4"
-    } else if (dropDown.value == "Utah Jazz") {
-        document.getElementById("main-box").style.backgroundColor = "#002B5C"
-        document.body.style.backgroundColor = "#F9A01B"
-        document.getElementById("header").style.backgroundColor = "#00471B"
-    } else if (dropDown.value == "Washington Wizards") {
-        document.getElementById("main-box").style.backgroundColor = "#002B5C"
-        document.body.style.backgroundColor = "#C4CED4"
-        document.getElementById("header").style.backgroundColor = "#E31837"
+    // Switch case to increase productivity.
+    switch(dropDown.value) {
+        case "Atlanta Hawks":
+            colorChange("#E03A3E","#26282A","#C1D32F","#000000",);
+            break;
+        case "Boston Celtics":
+            colorChange("#007A33","#BA9653","#963821","#000000");
+            break;
+        case "Brooklyn Nets":
+            colorChange("#000000","#FFFFFF","#000000","#FFFFFF");
+            break;
+        case "Charlotte Hornets":
+            colorChange("#1D1160","#A1A1A4","#00788C","#000000");
+            break;
+        case "Chicago Bulls":
+            colorChange("#CE1141","#000000","#CE1141","#000000");
+            break;    
+        case "Cleveland Cavaliers":
+            colorChange("#860038","#FDBB30","#860038","#000000");
+            break;    
+        case "Dallas Mavericks":
+            colorChange("#00538C","#B8C4CA","#002B5E","#000000");
+            break;
+        case "Denver Nuggets":
+            colorChange("#0E2240","#1D428A","#FEC524","#000000");
+            break;
+        case "Detroit Pistons":
+            colorChange("#C8102E","#BEC0C2","#1D42BA","#000000");
+            break;
+        case "Golden State Warriors":
+            colorChange("#FFC72C","#1D428A","#FFC72C","#000000");
+            break;
+        case "Houston Rockets":
+            colorChange("#CE1141","#000000","#C4CED4","#000000");
+            break;
+        case "Indiana Pacers":
+            colorChange("#002D62","#FDBB30","#BEC0C2","#000000");
+            break;
+        case "Los Angeles Clippers":
+            colorChange("#C8102E","#BEC0C2","#1D428A","#000000");
+            break;    
+        case "Los Angeles Lakers":
+            colorChange("#000000","#552583","#FDB927","#000000");
+            break;
+        case "Memphis Grizzlies":
+            colorChange("#5D76A9","#12173F","#5D76A9","#FFFFFF");
+            break;
+        case "Miami Heat":
+            colorChange("#98002E","#000000","#98002E","#000000");
+            break;
+        case "Milwaukee Bucks":
+            colorChange("#00471B","#0077C0","#EEE1C6","#000000");
+            break;
+        case "Minnesota Timberwolves":
+            colorChange("#0C2340","#9EA2A2","#236192","#000000");
+            break;
+        case "New Orleans Pelicans":
+            colorChange("#0C2340","#85714D","#C8102E","#000000");
+            break;
+        case "New York Knicks":
+            colorChange("#006BB6","#F58426","#BEC0C2","#000000");
+            break;
+        case "Oklahoma City Thunder":
+            colorChange("#007AC1","#002D62","#EF3B24","#000000");
+            break;
+        case "Orlando Magic":
+            colorChange("#0077C0","#000000","#C4CED4","#000000");
+            break;
+        case "Philadelphia 76ers":
+            colorChange("#006BB6","#002B5C","#ED174C","#000000");
+            break;
+        case "Phoenix Suns":
+            colorChange("#1D1160","#E56020","#000000","#FFFFFF");
+            break;
+        case "Portland Trail Blazers":
+            colorChange("#E03A3E","#000000","#E03A3E","#000000");
+            break;
+        case "Sacramento Kings":
+            colorChange("#000000","#5A2D81","#63727A","#000000");
+            break;    
+        case "San Antonio Spurs":
+            colorChange("#C4CED4","#000000","#C4CED4","#000000");
+            break;   
+        case "Toronto Raptors":
+            colorChange("#BA0C2F","#000000","#A1A1A4","#000000");
+            break;      
+        case "Utah Jazz":
+            colorChange("#F9A01B","#002B5C","#00471B","#000000");
+            break;   
+        case "Washington Wizards":
+            colorChange("#002B5C","#C4CED4","#E31837","#000000");
+            break; 
     }
 }
