@@ -185,7 +185,7 @@ function inputImage() {
 
 // Changes multiple background colors according to team selected.
 function changeBodyBg() {
-  function colorChange(mainColor, bodyColor, headerColor, headingColor) {
+  function colorChange(mainColor, bodyColor, headerColor) {
     // Color for middle column box with stats.
     document.getElementById("main-box").style.backgroundColor = mainColor;
     // Color for whole page background.

@@ -3,12 +3,20 @@
 }
 
 header {
-    background-color: orange;
     color: black;
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
     height: 10%;
+}
+
+h2 {
+    font-size: 70px;
+    margin: 10px;
+}
+
+.navbar { 
+    float: right;
 }
 
 .court {
