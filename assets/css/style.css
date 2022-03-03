@@ -13,6 +13,14 @@ header {
     bottom: 0px;
     left: 0px;
 }
+p {
+    margin: 5px;
+}
+
+.drop-down {
+    padding: 1px;
+
+}
 
 .nba {
     position:absolute;
