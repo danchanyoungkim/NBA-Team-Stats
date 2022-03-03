@@ -7,10 +7,24 @@ header {
     height: 10%;
 }
 
+.court {
+    height: 50%;
+    position:relative;
+    bottom: 0px;
+    left: 0px;
+}
 
-/* #sumbit {
-    align-content: center;
-} */
+p {
+    margin: 5px;
+}
 
+.drop-down {
+    padding: 1px;
 
+}
 
+.nba {
+    position:absolute;
+    top: 134px;
+    left: 188px;
+}
