@@ -9,4 +9,13 @@ header {
 
 .court {
     height: 50%;
+    position:relative;
+    bottom: 0px;
+    left: 0px;
+}
+
+.nba {
+    position:absolute;
+    top: 134px;
+    left: 188px;
 }
