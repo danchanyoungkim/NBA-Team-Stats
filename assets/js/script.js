@@ -1,6 +1,5 @@
-const api_url =
-  "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4";
-// const api_url2 = 245345
+const api_url = "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4";
+
 let dropDown = document.getElementById("dropDown");
 let api_key = "l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let ticketMasterUrl =
@@ -22,7 +21,7 @@ function getTicketmaster() {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data)
+
       let events = data._embedded.events;
       for (let i = 0; i < events.length; i++) {
         let eventName = events[i].name;
@@ -45,7 +44,7 @@ function getTicketmaster() {
 
         eventList.append(eventLi);
       }
-      // console.log(data._embedded.events)
+
     });
 }
 getTicketmaster();
@@ -59,10 +58,6 @@ dropDown.addEventListener("change", function () {
     });
   });
 
-  // getApi(api_url2).then(functions(info){
-  //     info.
-  //     //update image src = team logo
-  // })
 });
 
 let teamAbr = document.getElementById("teamAbr");
