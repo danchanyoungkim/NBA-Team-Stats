@@ -60,27 +60,78 @@ function teamData(team) {
         </tr>`;
     tableColumns += stats
     document.getElementById("teamStats").innerHTML = tableColumns;
-}
-    // getTicketmaster(team.Name)
-    
-    /* Building player display from an api
+
+    // List of players per team selected in dropdown.
     const apiUrl3 = "https://api.sportsdata.io/v3/nba/scores/json/Players/"+(team.Team)+"?key=13be218e384a4c4db81b4be3782d2c16"
-    fetch(apiUrl3)
-        .then(response => response.json())
-        .then(data => console.log(data));
+        getApi(apiUrl3).then(function (data) {
+            console.log(data)
+            data.forEach(player => {
+                let playerColumns = `<tr>
+                    <th>Player</th>
+                    <th>#</th>
+                    <th>Pos</th>
+                    <th>Height</th>
+                    <th>Weight</th>
+                    <th>BirthDate</th>
+                    <th>Exp</th>
+                    <th>College</th>
+                    <th>Salary</th>
+                </tr>`;
+                
         
-    //for (leti = 0; i < data.length; i++) {
-      //  console.log (data.FirstName);
-    }
+                removeLastCharacters(player.BirthDate)
+                let playerStats = `<tr>
+                    <td>${player.YahooName}</td>
+                    <td id = "player-jersey">${player.Jersey}</td>
+                    <td>${player.Position}</td>
+                    <td>${toFeetandInch(player.Height)}</td>
+                    <td>${player.Weight}</td>
+                    <td>${player.BirthDate}</td>
+                    <td id = "player-experience">${player.Experience}</td>
+                    <td>${player.College}</td>
+                    <td id = "player-salary">${player.Salary}</td>
+                </tr>`;
+            playerColumns += playerStats
+            document.getElementById("player-list").innerHTML = playerColumns;
+            
+            // If value equals null for either jersey or salary, then display text "N/A".
+            let nullJersey = player.Jersey;
+            let nullSalary = player.Salary;
+                if (nullJersey || nullSalary == null) {
+                    // If true, then "N/A" will replace the value in the table.
+                    document.getElementById("player-jersey").innerHTML = "N/A";
+                    document.getElementById("player-salary").innerHTML = "N/A";
+                };
+            
+            // If value equals 0 for years of experience in NBA, then display text "Rookie".
+            let numYear = player.Experience;
+                if (numYear == 0) {
+                    document.getElementById("player-experience").innerHTML = "Rookie";
+                };
 
-
-//}*/
+            // Removes last 9 characters (unneeded) for player.BirthDate from apiUrl3.
+            function removeLastCharacters() {
+                player.BirthDate = player.BirthDate.substring(0,player.BirthDate.length-9);
+            };
+            
+            // Converts inches to feet and inches for player.Height from apiUrl13.
+            function toFeetandInch(){
+                return (parseInt(player.Height/12) + "'" + Math.round(player.Height%12,1)+'"')
+            };
+        });
+    });
+}
 
 function getApi(url) {
     return fetch(url).then(function (response) {
         return response.json()
     })
 }
+
+function removeLastCharacter() {
+    player.BirthDate = player.BirthDate.substring(0,player.BirthDate.length-1);
+    console.log(player.BirthDate); 
+    }
 
 
 

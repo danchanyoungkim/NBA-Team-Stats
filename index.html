@@ -17,8 +17,7 @@
         <div class='tile'>
                 <div class = "column auto">
                     <p class = "has-text-centered"> Select your team: </p>
-                    <!-- id 'teamList' will be a function-->
-                    <select id = "dropDown" onchange="getApi(), changeBodyBg(), inputImage()">
+                    <select class = "drop-down" id = "dropDown" onchange="getApi(), changeBodyBg(), inputImage()">
                       <option> ------ Select Your Team ------ </option>
                       <option value="Atlanta Hawks">Atlanta Hawks</option>
                       <option value="Boston Celtics">Boston Celtics</option>
@@ -67,9 +66,9 @@
                     <h2 id="teamAbr" class = "has-text-white is-size-3"></h2> 
                 </div>    
                 <table id='teamStats' class="box table is-bordered has-text-centered"></table>
-                <table id='playerList' class="box table is-bordered has-text-centered"></table>
+                <table id='player-list' class="box table is-bordered has-text-centered"></table>
             </div>
-            <div class='column auto' style='display: flex; height: 700px;'></div> 
+            <div class='column auto' style='display: flex; height: 850px;'></div> 
         </div>
     </main>
     <script src="./assets/js/script.js"></script>
