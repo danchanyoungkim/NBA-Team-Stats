@@ -1,12 +1,11 @@
-const api_url =
-  "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4";
-// const api_url2 = 245345
+const api_url = "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4";
+
 let dropDown = document.getElementById("dropDown");
 let api_key = "l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let ticketMasterUrl =
   "https://app.ticketmaster.com/discovery/v2/events.json?keyword=Chicago%20Bulls&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let eventList = document.getElementById("event-list");
-let playerList = document.getElementById("player-list");
+let playerList = document.getElementById("player-list")
 
 // function getTicketmaster(teamName){
 // fetch ticket master api and get all events for selected team.(teamName)
@@ -22,6 +21,7 @@ function getTicketmaster() {
       return response.json();
     })
     .then(function (data) {
+
       let events = data._embedded.events;
       for (let i = 0; i < events.length; i++) {
         let eventName = events[i].name;
@@ -44,7 +44,7 @@ function getTicketmaster() {
 
         eventList.append(eventLi);
       }
-      // console.log(data._embedded.events)
+
     });
 }
 getTicketmaster();
@@ -58,10 +58,6 @@ dropDown.addEventListener("change", function () {
     });
   });
 
-  // getApi(api_url2).then(functions(info){
-  //     info.
-  //     //update image src = team logo
-  // })
 });
 
 let teamAbr = document.getElementById("teamAbr");
@@ -92,8 +88,8 @@ function teamData(team) {
         <td>${team.Steals}</td>
         <td>${team.BlockedShots}</td>
         </tr>`;
-  tableColumns += stats;
-  document.getElementById("teamStats").innerHTML = tableColumns;
+    tableColumns += stats
+    document.getElementById("teamStats").innerHTML = tableColumns;
 
     
     // List of players per team selected in dropdown.
@@ -169,47 +165,10 @@ function teamData(team) {
                 statSalary.textContent = `${player.Salary}`
                 playerColumns3.append(statName, statNum, statPos, statHeight, statWeight, statBd, statExp, statCollege, statSalary)
 
-      // Converts inches to feet and inches for player.Height from apiUrl13.
-      player.Height =
-        parseInt(player.Height / 12) +
-        "'" +
-        Math.round(player.Height % 12, 1) +
-        '"';
-
-      let playerColumns3 = document.createElement("tr");
-      let statName = document.createElement("td");
-      let statNum = document.createElement("td");
-      let statPos = document.createElement("td");
-      let statHeight = document.createElement("td");
-      let statWeight = document.createElement("td");
-      let statBd = document.createElement("td");
-      let statExp = document.createElement("td");
-      let statCollege = document.createElement("td");
-      let statSalary = document.createElement("td");
-      statName.textContent = `${player.YahooName}`;
-      statNum.textContent = `${player.Jersey}`;
-      statPos.textContent = `${player.Position}`;
-      statHeight.textContent = `${player.Height}`;
-      statWeight.textContent = `${player.Weight}`;
-      statBd.textContent = `${player.BirthDate}`;
-      statExp.textContent = `${player.Experience}`;
-      statCollege.textContent = `${player.College}`;
-      statSalary.textContent = `${player.Salary}`;
-      playerColumns3.append(
-        statName,
-        statNum,
-        statPos,
-        statHeight,
-        statWeight,
-        statBd,
-        statExp,
-        statCollege,
-        statSalary
-      );
-
-      playerList.append(playerColumns3);
+                playerList.append(playerColumns3) 
+            
+        });
     });
-  });
 }
 
 function getApi(url) {

@@ -1,3 +1,7 @@
+* {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 header {
     background-color: orange;
     color: black;
@@ -14,13 +18,12 @@ header {
     left: 0px;
 }
 
-p {
-    margin: 5px;
-}
 
 .drop-down {
     padding: 1px;
-
+    align-content: center;
+    justify-content: center;
+    margin-left: 15%;
 }
 
 .nba {
@@ -29,9 +32,23 @@ p {
     left: 188px;
 }
 
-#event-list {
-    color: black;
-    background-color: whitesmoke;
-    border: black solid 2px;
-    border-radius: 10px;
+div ul li {
+    display:flex;
+    border: 2px solid black;
+    background-color: white;
+    align-content: center;
+    justify-content: center;
 }
+
+table {
+    align-content: center;
+    justify-content: center;
+    margin-left: 12%; 
+}
+
+/* .mtable {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex: wrap;
+} */
