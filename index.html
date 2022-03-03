@@ -10,12 +10,18 @@
     <title>NBA Team Stats</title>
 
 <body>
-    <header id = "header">
-        <h1 id = "heading" class='heading is-size-2'>NBA Team Stats and Information</h1>
+    <header id = "header" >
+        <img class="court=" src="./assets/images/court.png">
+        <div class = "is-flex">    
+            <img class="nba image is-128x128" id = "image" src="./assets/images/NBA Logo.png">
+        </div>
     </header>
     <main>
         <div class='tile'>
                 <div class = "column auto">
+                    <p class = "has-text-centered has-text-white"> Select your team: </p>
+                    <!-- id 'teamList' will be a function-->
+                    <select id = "dropDown">
                     <p class = "has-text-centered"> Select your team: </p>
                     <select class = "drop-down" id = "dropDown" onchange="getApi(), changeBodyBg(), inputImage()">
                       <option> ------ Select Your Team ------ </option>
@@ -55,16 +61,10 @@
                     <ul>
                         
                     </ul>
-                </div>
-                
+                </div>    
             </div>
             <div id="main-box" class='column is-two-thirds column is-center'>
-                <div class = "is-flex">    
-                    <figure class="image is-128x128">
-                        <img id = "image" src="./assets/images/NBA Logo.png">
-                    </figure>
-                    <h2 id="teamAbr" class = "has-text-white is-size-3"></h2> 
-                </div>    
+                <h2 id="teamAbr" class = "has-text-white is-size-3"></h2>    
                 <table id='teamStats' class="box table is-bordered has-text-centered"></table>
                 <table id='player-list' class="box table is-bordered has-text-centered"></table>
             </div>
