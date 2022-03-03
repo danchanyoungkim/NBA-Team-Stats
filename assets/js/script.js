@@ -52,7 +52,6 @@ getTicketmaster();
 
 dropDown.addEventListener("change", function () {
   getApi(api_url).then(function (info) {
-    console.log(info);
     info.forEach((team) => {
       if (team.Name === dropDown.value) {
         teamData(team);
@@ -118,33 +117,38 @@ function teamData(team) {
             playerHeight.textContent = "Height"
             playerWeight.textContent = "Weight"
             playerBd.textContent = "Birthdate"
-            playerExp.textContent = "Exp"
+            playerExp.textContent = "Exp (Year)"
             playerCollege.textContent = "College"
-            playerSalary.textContent = "Salary"
+            playerSalary.textContent = "Salary ($)"
             playerColumns2.append(players, playerNum, playerPos, playerHeight, playerWeight, playerBd, playerExp, playerCollege, playerSalary)
             playerList.append(playerColumns2);
             data.forEach(player => {
+                
                 // If value equals null for either jersey or salary, then display text "N/A".
                 let nullJersey = player.Jersey;
                 let nullSalary = player.Salary;
-                    if (nullJersey || nullSalary == null) {
+                    if (nullJersey == null) {
                         // If true, then "N/A" will replace the value in the table.
                         player.Jersey = "N/A";
+                    }    
+                    if (nullSalary == null) {
                         player.Salary = "N/A";
                     };
+                
+                // Converts inches to feet and inches for player.Height from apiUrl13.
+                player.Height = (parseInt(player.Height/12) + "'" + Math.round(player.Height%12,1)+'"')
+
+                // Removes last 9 characters (unneeded) for player.BirthDate from apiUrl3.
+                player.BirthDate = player.BirthDate.substring(0,player.BirthDate.length-9);
                 
                 // If value equals 0 for years of experience in NBA, then display text "Rookie".
                 let numYear = player.Experience;
                     if (numYear == 0) {
                         player.Experience = "Rookie";
                     };
-    
-                // Removes last 9 characters (unneeded) for player.BirthDate from apiUrl3.
-                player.BirthDate = player.BirthDate.substring(0,player.BirthDate.length-9);
-                
-                // Converts inches to feet and inches for player.Height from apiUrl13.
-                player.Height = (parseInt(player.Height/12) + "'" + Math.round(player.Height%12,1)+'"')
-                
+
+                player.Salary = player.Salary.toLocaleString('en-US')
+            
                 let playerColumns3 = document.createElement("tr");
                 let statName = document.createElement("td");
                 let statNum = document.createElement("td");
@@ -193,9 +197,8 @@ function changeBodyBg() {
     document.body.style.backgroundColor = bodyColor;
     // Color for header background.
     document.getElementById("header").style.backgroundColor = headerColor;
-    // Color for header title in case text becomes unreadable due to "header" color.
-    document.getElementById("heading").style.color = headingColor;
   }
+
   // Switch case to increase productivity.
   switch (dropDown.value) {
     case "Atlanta Hawks":
