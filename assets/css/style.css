@@ -10,13 +10,18 @@ header {
     height: 10%;
 }
 
-h2 {
-    font-size: 70px;
-    margin: 10px;
-}
+
 
 .navbar { 
     float: right;
+
+header h1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: aliceblue;
+    font-size: 125%;
+
 }
 
 .court {
@@ -54,9 +59,3 @@ table {
     margin-left: 12%; 
 }
 
-/* .mtable {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex: wrap;
-} */
