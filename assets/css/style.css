@@ -55,10 +55,8 @@ nav a {
 
 
 .drop-down {
-    padding: 1px;
-    align-content: center;
-    justify-content: center;
-    margin-left: 15%;
+    padding: 2px;
+    width: 100%;
 }
 
 .nba {
@@ -94,6 +92,14 @@ table {
 }
 
 @media screen and (max-width: 1350px) {
+    main {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+}
 
-
+@media screen and (max-width: 768px) {
+   .recentTeam {
+       width: 100%;
+   }
 }
