@@ -7,6 +7,7 @@ let eventList = document.getElementById("event-list");
 let playerList = document.getElementById("player-list");
 let savedSearch = document.getElementById("searched-team");
 let searchedTeam = "";
+
 // function getTicketmaster(teamName){
 // fetch ticket master api and get all events for selected team.(teamName)
 // loop through the array of events.
@@ -14,6 +15,7 @@ let searchedTeam = "";
 // update text of heading and p-tags with event name, description? and date.
 // append the list item to our emply list in html
 // }
+
 dropDown.addEventListener("change", function (event) {
   event.preventDefault();
   searchedTeam = dropDown.value;
@@ -36,30 +38,31 @@ function showSaved() {
   let saved = JSON.parse(localStorage.getItem("savedTeam"));
   saved.forEach(function (team) {
     let li = document.createElement("li");
-    let button = document.createElement("button")
-    button.setAttribute("class", "recentTeam")
-    button.textContent = team
-    li.append(button)
-    savedSearch.append(li)
-  })
+    let button = document.createElement("button");
+    button.setAttribute("class", "recentTeam");
+    button.textContent = team;
+    li.append(button);
+    savedSearch.append(li);
+  });
 }
 
 // TicketMaster api event list function
 function getTicketmaster() {
   let ticketMasterUrl = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${dropDown.value}&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG`;
-
+  // fetch ticket master api and get all events for selected team.(teamName)
   fetch(ticketMasterUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      eventList.innerHTML = ''
+      eventList.innerHTML = "";
       let events = data._embedded.events;
+      // loop through the array of events.
       for (let i = 0; i < 10; i++) {
         let eventName = events[i].name;
         let eventDate = events[i].dates.start.localDate;
         let eventUrl = events[i].url;
-
+        // for each event created a li tag with a heading tag, p tag and anchor tag.
         let eventLi = document.createElement("li");
         let eventNameEl = document.createElement("h3");
         let eventDateEl = document.createElement("p");
@@ -70,10 +73,10 @@ function getTicketmaster() {
         eventUrlEl.textContent = "Buy Tickets!";
         eventUrlEl.setAttribute("href", eventUrl);
 
+        // appended the list item to our emply list in html
         eventLi.append(eventNameEl);
         eventLi.append(eventDateEl);
         eventLi.append(eventUrlEl);
-
         eventList.append(eventLi);
       }
     });

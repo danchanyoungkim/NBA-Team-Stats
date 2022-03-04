@@ -1,84 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
-  <link rel='stylesheet' href='./assets/css/style.css'>
-  <title>NBA Team Stats</title>
-  <link rel="icon" type="image/x-icon" href="./assets/images/basketball_icon.png">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>NBA Team Stats</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="./assets/images/basketball_icon.png"
+    />
+  </head>
 
-<body>
-    <header id = "top">
-        <img class="court=" src="./assets/images/court.png">
-        <h1>NBA Team Stats 2022 Season</h1>
-        <nav id = "nav-color">
-            <li><a id = "nav-text" href="#top">Back to Top</a></li>
-            <li><a id = "nav-texts" href="./aboutus.html">About Us</a></li>
-        </nav>   
+  <body>
+    <header id="top">
+      <img class="court=" src="./assets/images/court.png" />
+      <h1>NBA Team Stats 2022 Season</h1>
+      <nav id="nav-color">
+        <li><a id="nav-text" href="#top">Back to Top</a></li>
+        <li><a id="nav-texts" href="./aboutus.html">About Us</a></li>
+      </nav>
     </header>
 
     <main>
-        <div class='tile'>
-                <div id = "left-column" class = "column auto">
-                    <p id = "text-select" class = "has-text-centered"> Select your team: </p>
-                    <select class = "drop-down" id = "dropDown" onchange= "changeBodyBg(), inputImage()">
-                      <option disabled selected> ------ Select Your Team ------ </option>
-                      <option value="Atlanta Hawks">Atlanta Hawks</option>
-                      <option value="Boston Celtics">Boston Celtics</option>
-                      <option value="Brooklyn Nets">Brooklyn Nets</option>
-                      <option value="Charlotte Hornets">Charlotte Hornets</option>
-                      <option value="Chicago Bulls">Chicago Bulls</option>
-                      <option value="Cleveland Cavaliers">Cleveland Cavaliers</option>
-                      <option value="Dallas Mavericks">Dallas Mavericks</option>
-                      <option value="Denver Nuggets">Denver Nuggets</option>
-                      <option value="Detroit Pistons">Detroit Pistons</option>
-                      <option value="Golden State Warriors">Golden State Warriors</option>
-                      <option value="Houston Rockets">Houston Rockets</option>
-                      <option value="Indiana Pacers">Indiana Pacers</option>
-                      <option value="Los Angeles Clippers">Los Angeles Clippers</option>
-                      <option value="Los Angeles Lakers">Los Angeles Lakers</option>
-                      <option value="Memphis Grizzlies">Memphis Grizzlies</option>
-                      <option value="Miami Heat">Miami Heat</option>
-                      <option value="Milwaukee Bucks">Milwaukee Bucks</option>
-                      <option value="Minnesota Timberwolves">Minnesota Timberwolves</option>
-                      <option value="New Orleans Pelicans">New Orleans Pelicans</option>
-                      <option value="New York Knicks">New York Knicks</option>
-                      <option value="Oklahoma City Thunder">Oklahoma City Thunder</option>
-                      <option value="Orlando Magic">Orlando Magic</option>
-                      <option value="Philadelphia 76ers">Philadelphia 76ers</option>
-                      <option value="Phoenix Suns">Phoenix Suns</option>
-                      <option value="Portland Trail Blazers">Portland Trail Blazers</option>
-                      <option value="Sacramento Kings">Sacramento Kings</option>
-                      <option value="San Antonio Spurs">San Antonio Spurs</option>
-                      <option value="Toronto Raptors">Toronto Raptors</option>
-                      <option value="Utah Jazz">Utah Jazz</option>
-                      <option value="Washington Wizards">Washington Wizards</option>
-                    </select>
-                    <ul id="searched-team">
-
-                    </ul>
-            </div>
-            <div id="main-box" class='column is-two-thirds column is-center'>
-                <div class = "is-flex">    
-                    <figure class = "image is-128x128">
-                        <img id = "image" src = "">
-                    </figure>
-                    <h2 id="teamAbr" class = "has-text-white is-size-3"></h2>    
-                </div>
-                <table id='teamStats' class="table is-bordered has-text-centered"></table>
-                <table id='player-list' class="table is-bordered has-text-centered"></table>
-            </div>
-            <div class = ' column auto'>
-                <ul id= 'event-list' class="is-center">
-                    
-                </ul>
-            </div>
+      <div class="tile">
+        <div id="left-column" class="column auto">
+          <p id="text-select" class="has-text-centered">Select your team:</p>
+          <select
+            class="drop-down"
+            id="dropDown"
+            onchange="changeBodyBg(), inputImage()"
+          >
+            <option disabled selected>------ Select Your Team ------</option>
+            <option value="Atlanta Hawks">Atlanta Hawks</option>
+            <option value="Boston Celtics">Boston Celtics</option>
+            <option value="Brooklyn Nets">Brooklyn Nets</option>
+            <option value="Charlotte Hornets">Charlotte Hornets</option>
+            <option value="Chicago Bulls">Chicago Bulls</option>
+            <option value="Cleveland Cavaliers">Cleveland Cavaliers</option>
+            <option value="Dallas Mavericks">Dallas Mavericks</option>
+            <option value="Denver Nuggets">Denver Nuggets</option>
+            <option value="Detroit Pistons">Detroit Pistons</option>
+            <option value="Golden State Warriors">Golden State Warriors</option>
+            <option value="Houston Rockets">Houston Rockets</option>
+            <option value="Indiana Pacers">Indiana Pacers</option>
+            <option value="Los Angeles Clippers">Los Angeles Clippers</option>
+            <option value="Los Angeles Lakers">Los Angeles Lakers</option>
+            <option value="Memphis Grizzlies">Memphis Grizzlies</option>
+            <option value="Miami Heat">Miami Heat</option>
+            <option value="Milwaukee Bucks">Milwaukee Bucks</option>
+            <option value="Minnesota Timberwolves">
+              Minnesota Timberwolves
+            </option>
+            <option value="New Orleans Pelicans">New Orleans Pelicans</option>
+            <option value="New York Knicks">New York Knicks</option>
+            <option value="Oklahoma City Thunder">Oklahoma City Thunder</option>
+            <option value="Orlando Magic">Orlando Magic</option>
+            <option value="Philadelphia 76ers">Philadelphia 76ers</option>
+            <option value="Phoenix Suns">Phoenix Suns</option>
+            <option value="Portland Trail Blazers">
+              Portland Trail Blazers
+            </option>
+            <option value="Sacramento Kings">Sacramento Kings</option>
+            <option value="San Antonio Spurs">San Antonio Spurs</option>
+            <option value="Toronto Raptors">Toronto Raptors</option>
+            <option value="Utah Jazz">Utah Jazz</option>
+            <option value="Washington Wizards">Washington Wizards</option>
+          </select>
+          <ul id="searched-team"></ul>
         </div>
+        <div id="main-box" class="column is-two-thirds column is-center">
+          <div class="is-flex">
+            <figure class="image is-128x128">
+              <img id="image" src="" />
+            </figure>
+            <h2 id="teamAbr" class="has-text-white is-size-3"></h2>
+          </div>
+          <table
+            id="teamStats"
+            class="table is-bordered has-text-centered"
+          ></table>
+          <table
+            id="player-list"
+            class="table is-bordered has-text-centered"
+          ></table>
+        </div>
+        <div class="column auto">
+          <ul id="event-list" class="is-center"></ul>
+        </div>
+      </div>
     </main>
     <script src="./assets/js/script.js"></script>
-</body>
-
+  </body>
 </html>
