@@ -101,7 +101,7 @@ table {
 }
 
 @media 
-only screen and (max-width: 760px),
+only screen and (max-width: 1350px),
 (min-device-width: 768px) and (max-device-width: 1024px)  {
 
 	/* Force table to not be like tables anymore */
@@ -136,3 +136,4 @@ only screen and (max-width: 760px),
 		padding-right: 10px; 
 		white-space: nowrap;
 	}
+}
