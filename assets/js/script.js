@@ -7,8 +7,13 @@ let eventList = document.getElementById("event-list");
 let playerList = document.getElementById("player-list");
 let savedSearch = document.getElementById("searched-team");
 let searchedTeam = "";
-// let thisTeam = document.querySelector(".recentTeam")
+let clear = document.getElementById("clear");
 let teamAbr = document.getElementById("teamAbr");
+
+clear.addEventListener("click", function(){
+  localStorage.clear();
+  location.replace("./index.html");
+})
 
 // event listener for drop down menu that adds the team selected into local storage.
 dropDown.addEventListener("change", function (event) {
