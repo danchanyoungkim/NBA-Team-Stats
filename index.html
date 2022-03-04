@@ -7,16 +7,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
   <link rel='stylesheet' href='./assets/css/style.css'>
   <title>NBA Team Stats</title>
+  <link rel="icon" type="image/x-icon" href="./assets/images/basketball_icon.png">
 </head>
 
 <body>
-    <header id = "header" >
+    <header id = "top">
         <img class="court=" src="./assets/images/court.png">
+        <h1>NBA Team Stats 2022 Season</h1>
+        <nav id = "nav-color">
+            <li><a id = "nav-text" href="#top">Back to Top</a></li>
+            <li><a id = "nav-texts" href="./aboutus.html">About Us</a></li>
+        </nav>   
     </header>
+
     <main>
         <div class='tile'>
                 <div id = "left-column" class = "column auto">
-                    <p id = "select-caption" class = "has-text-centered has-text-white"> Select your team: </p>
+                    <p id = "text-select" class = "has-text-centered"> Select your team: </p>
                     <select class = "drop-down" id = "dropDown" onchange= "changeBodyBg(), inputImage()">
                       <option disabled selected> ------ Select Your Team ------ </option>
                       <option value="Atlanta Hawks">Atlanta Hawks</option>
@@ -58,7 +65,7 @@
                     </figure>
                     <h2 id="teamAbr" class = "has-text-white is-size-3"></h2>    
                 </div>
-                <table id='teamStats' class="table is-bordered has-text-centered mtable"></table>
+                <table id='teamStats' class="table is-bordered has-text-centered"></table>
                 <table id='player-list' class="table is-bordered has-text-centered"></table>
             </div>
             <div class = ' column auto'>
