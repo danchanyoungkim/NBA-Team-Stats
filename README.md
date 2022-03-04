@@ -1,28 +1,31 @@
 
-# Project-1-stat-website
+# NBA Team Stats
+
+[Live Website Page](https://danchanyoungkim.github.io/Project-1-stat-website/)
 
 
-Basic pseudo code for what we are looking to accomplish with the project.
+![Main](./assets/images/screen-shots/load.PNG)
+![First](./assets/images/screen-shots/first_team.PNG)
+![Second](./assets/images/screen-shots/second_team.PNG)
 
-html lay out has to be setup in a way that makes sense w/ ID's and classes'(and variables in JS) that are clear for each of us to use when coding different functions.
-(be slightly more specific in global variables so locals can be cut down)
+## Description
 
-__________
+We made a website that will help find your favorite team stats, player stats for that team, and upcoming event tickets quickly.  You select a team from a drop down menu or from previously searched team buttons.  It will display the selected teams current stats and player stats on tables in the middle of the page, and the next ten events for the selected team will be displayed.
 
-When working with the API's we are looking to get specific information from sportsdata.io
+### Tools Used
+- HTML
+- CSS
+- Bulma (CSS Framework)
+- Javascript
+- sportsdata.io API
+- ticketmaster API
 
-Theses are "Season" - "Name" - "Team" - "Wins" - "Losses" - "Games" - "FieldGoalsPercentage" - "FreeThrowsPercentage" - "Rebounds" - "Assists" - "Steals" - "BlockedShots"
+## Contributors
+[Andreas Kaiafas](https://github.com/Akaiafas526)
 
-How it should work*** When a Team selected in "drop down menu" -> displays in middle the screen "2022 Season" - Their name, "team" - abreviation, "stats" are displayed below the name/and "team".  On the right hand side of the screen the ticketmaster widget should display the currently selected teams ticket information for X amount of time.
+[Dan Kim](https://github.com/danchanyoungkim)
 
-JS - written to link the drop down menu with the display center and ticketmaster API widget.
-Global variable linking all 3 aspects of the page.
+[Jason Snyder](https://github.com/jsnyder159?tab=repositories)
 
-So dropdown menu is directly effecting center information and widget, widget and center information are not linked together.  If one is working and the other isn't the drop down is working and the issue could just be with the item not working. A-B --  A-C --  B!-C
 
-Bulma is "bootstrap light" make sure you look up "README" for bulma.
-
-Make sure when formating HTML Bulma is used for layout purposes.
-
-___________
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
