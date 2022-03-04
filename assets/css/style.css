@@ -64,7 +64,7 @@ nav a {
     left: 188px;
 }
 
-div ul li {
+#event-list li{
     display:flex;
     border: 2px solid black;
     background-color: white;
@@ -78,8 +78,10 @@ table {
     margin-left: 12%; 
 }
 
-.recentTeam {
-    background-color: white;
+.recentTeam button {
+    display:flex;
     border: 2px solid black;
-    
+    background-color: white;
+    align-content: center;
+    justify-content: center;
 }
