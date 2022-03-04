@@ -1,5 +1,5 @@
 const api_url =
-  "https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4";
+"https://api.sportsdata.io/v3/nba/scores/json/TeamSeasonStats/2022?key=55ccc6c3c41240708737b94117caf3c4";
 
 let dropDown = document.getElementById("dropDown");
 let api_key = "l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
@@ -7,15 +7,10 @@ let eventList = document.getElementById("event-list");
 let playerList = document.getElementById("player-list");
 let savedSearch = document.getElementById("searched-team");
 let searchedTeam = "";
+// let thisTeam = document.querySelector(".recentTeam")
+let teamAbr = document.getElementById("teamAbr");
 
-// function getTicketmaster(teamName){
-// fetch ticket master api and get all events for selected team.(teamName)
-// loop through the array of events.
-// for each event create an li tag with a heading tag & two p tags.
-// update text of heading and p-tags with event name, description? and date.
-// append the list item to our emply list in html
-// }
-
+// event listener for drop down menu that adds the team selected into local storage.
 dropDown.addEventListener("change", function (event) {
   event.preventDefault();
   searchedTeam = dropDown.value;
@@ -29,27 +24,51 @@ dropDown.addEventListener("change", function (event) {
   let selected = dropDown.value;
   savedTeam.push(selected);
   localStorage.setItem("savedTeam", JSON.stringify(savedTeam));
-  getTicketmaster();
+  getApi(api_url).then(function (info) {
+    info.forEach((team) => {
+      if (team.Name === dropDown.value) {
+        teamData(team);
+      }
+    });
+  });
+  getTicketmaster(selected);
+  inputImage(selected);
+  changeBodyBg(selected);
   showSaved();
+  
 });
 
+showSaved();
+// takes the saved information from local storage and saves it to a li - button element below the drop down
 function showSaved() {
   savedSearch.innerHTML = "";
-  let saved = JSON.parse(localStorage.getItem("savedTeam"));
+  let saved = JSON.parse(localStorage.getItem("savedTeam"))? JSON.parse(localStorage.getItem("savedTeam")):[];
   saved.forEach(function (team) {
     let li = document.createElement("li");
-    let button = document.createElement("button");
-    button.setAttribute("class", "recentTeam");
-    button.textContent = team;
-    li.append(button);
-    savedSearch.append(li);
-  });
+    let button = document.createElement("button")
+    button.setAttribute("class", "recentTeam")
+    button.textContent = team
+    button.addEventListener("click", function(){
+      getApi(api_url).then(function(info){
+      info.forEach((team) => {
+        if (team.Name === button.textContent) {
+          teamData(team);
+          getTicketmaster(button.textContent);
+          inputImage(button.textContent);
+          changeBodyBg(button.textContent);
+      }
+    })
+  })
+})
+    li.append(button)
+    savedSearch.append(li)
+  })
 }
 
-// TicketMaster api event list function
-function getTicketmaster() {
-  let ticketMasterUrl = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${dropDown.value}&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG`;
-  // fetch ticket master api and get all events for selected team.
+
+function getTicketmaster(value) {
+  let ticketMasterUrl = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${value}&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG`;
+
   fetch(ticketMasterUrl)
     .then(function (response) {
       return response.json();
@@ -82,21 +101,16 @@ function getTicketmaster() {
     });
 }
 
-dropDown.addEventListener("change", function () {
-  getApi(api_url).then(function (info) {
-    info.forEach((team) => {
-      if (team.Name === dropDown.value) {
-        teamData(team);
-      }
-    });
-  });
-});
+// on change listener for drop down menu
 
-let teamAbr = document.getElementById("teamAbr");
 
+
+// puts team name and abr above stats table
 function teamData(team) {
   let h2Team = `<h2>${team.Name} - ${team.Team}</h2>`;
   document.getElementById("teamAbr").innerHTML = h2Team;
+
+// builds top of table 
   let tableColumns = `<tr>
         <th>Games</th>
         <th>Wins</th>
@@ -109,6 +123,7 @@ function teamData(team) {
         <th>Blocked Shots</th>
     </tr>`;
 
+// builds table row and fills with information from API from the team selected from the drop down
   let stats = `<tr>
         <td>${team.Games}</td>
         <td>${team.Wins}</td>
@@ -234,6 +249,7 @@ function teamData(team) {
   });
 }
 
+// fetches sportsdata url and gives us the json
 function getApi(url) {
   return fetch(url).then(function (response) {
     return response.json();
@@ -241,13 +257,18 @@ function getApi(url) {
 }
 
 // Changes from NBA logo to team logo depending on dropdown chosen.
-function inputImage() {
-  document.getElementById("image").src =
-    "./assets/images/" + dropDown.value + ".png";
+function inputImage(value) {
+  if(value !== "------ Select Your Team ------"){
+    document.getElementById("image").src =
+      "./assets/images/" + value + ".png";
+  } else {
+    document.getElementById("image").src = "./assets/images/" + value + ".png"; 
+  }
+  
 }
 
 // Changes multiple background colors according to team selected.
-function changeBodyBg() {
+function changeBodyBg(value) {
   function colorChange(
     mainColor,
     bodyColor,
@@ -268,9 +289,11 @@ function changeBodyBg() {
     document.getElementById("nav-text").style.color = navText;
     document.getElementById("nav-texts").style.color = navTexts;
   }
+  colorSwitch(value)
 
+  function colorSwitch(value){
   // Switch case to increase productivity.
-  switch (dropDown.value) {
+  switch (value) {
     case "Atlanta Hawks":
       colorChange(
         "#E03A3E",
@@ -572,4 +595,4 @@ function changeBodyBg() {
       );
       break;
   }
-}
+}}
