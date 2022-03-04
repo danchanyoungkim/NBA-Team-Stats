@@ -6,6 +6,7 @@ let ticketMasterUrl =
   "https://app.ticketmaster.com/discovery/v2/events.json?keyword=Chicago%20Bulls&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG";
 let eventList = document.getElementById("event-list");
 let playerList = document.getElementById("player-list")
+let savedSearch = document.getElementById("searched-team")
 
 // function getTicketmaster(teamName){
 // fetch ticket master api and get all events for selected team.(teamName)
@@ -14,6 +15,34 @@ let playerList = document.getElementById("player-list")
 // update text of heading and p-tags with event name, description? and date.
 // append the list item to our emply list in html
 // }
+dropDown.addEventListener("change", function(event) {
+  event.preventDefault();
+  let searchSavedTeam = localStorage.getItem("savedTeam");
+  let savedTeam = []
+  if (searchSavedTeam === null){
+    savedTeam = []
+  } else{
+    savedTeam = JSON.parse(localStorage.getItem("savedTeam"));
+  }
+  let selected = dropDown.value
+  savedTeam.push(selected)
+  localStorage.setItem("savedTeam", JSON.stringify(savedTeam));
+
+showSaved();
+})
+
+function showSaved() {
+  savedSearch.innerHTML = ""
+  let saved = JSON.parse(localStorage.getItem("savedTeam"));
+  saved.forEach(function (team) {
+    let li = document.createElement("li");
+    li.setAttribute("class", "recentTeam")
+    li.textContent = team
+    savedSearch.append(li)
+  })
+}
+
+
 
 function getTicketmaster() {
   fetch(ticketMasterUrl)
@@ -23,7 +52,7 @@ function getTicketmaster() {
     .then(function (data) {
 
       let events = data._embedded.events;
-      for (let i = 0; i < events.length; i++) {
+      for (let i = 0; i < 10; i++) {
         let eventName = events[i].name;
         let eventDate = events[i].dates.start.localDate;
         let eventUrl = events[i].url;
