@@ -49,7 +49,7 @@ function showSaved() {
 // TicketMaster api event list function
 function getTicketmaster() {
   let ticketMasterUrl = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${dropDown.value}&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG`;
-  // fetch ticket master api and get all events for selected team.(teamName)
+  // fetch ticket master api and get all events for selected team.
   fetch(ticketMasterUrl)
     .then(function (response) {
       return response.json();
@@ -73,7 +73,7 @@ function getTicketmaster() {
         eventUrlEl.textContent = "Buy Tickets!";
         eventUrlEl.setAttribute("href", eventUrl);
 
-        // appended the list item to our emply list in html
+        // appends the list item to our empty list in html
         eventLi.append(eventNameEl);
         eventLi.append(eventDateEl);
         eventLi.append(eventUrlEl);
