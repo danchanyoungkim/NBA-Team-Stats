@@ -79,13 +79,14 @@ function getTicketmaster(value) {
       return response.json();
     })
     .then(function (data) {
-      eventList.innerHTML = ''
+      eventList.innerHTML = "";
       let events = data._embedded.events;
+      // loop through the array of events.
       for (let i = 0; i < 10; i++) {
         let eventName = events[i].name;
         let eventDate = events[i].dates.start.localDate;
         let eventUrl = events[i].url;
-
+        // for each event created a li tag with a heading tag, p tag and anchor tag.
         let eventLi = document.createElement("li");
         let eventNameEl = document.createElement("h3");
         let eventDateEl = document.createElement("p");
@@ -96,10 +97,10 @@ function getTicketmaster(value) {
         eventUrlEl.textContent = "Buy Tickets!";
         eventUrlEl.setAttribute("href", eventUrl);
 
+        // appends the list item to our empty list in html
         eventLi.append(eventNameEl);
         eventLi.append(eventDateEl);
         eventLi.append(eventUrlEl);
-
         eventList.append(eventLi);
       }
     });
