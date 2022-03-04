@@ -36,10 +36,12 @@ function showSaved() {
   let saved = JSON.parse(localStorage.getItem("savedTeam"));
   saved.forEach(function (team) {
     let li = document.createElement("li");
-    li.setAttribute("class", "recentTeam");
-    li.textContent = team;
-    savedSearch.append(li);
-  });
+    let button = document.createElement("button")
+    button.setAttribute("class", "recentTeam")
+    button.textContent = team
+    li.append(button)
+    savedSearch.append(li)
+  })
 }
 
 // TicketMaster api event list function
