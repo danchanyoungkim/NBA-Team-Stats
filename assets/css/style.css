@@ -29,6 +29,7 @@ nav {
     text-align: center;
     background-color: black;
     bottom: 0px;
+    padding: 5px;
 }
 
 nav li {
