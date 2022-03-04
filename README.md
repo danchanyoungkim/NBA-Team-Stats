@@ -1,7 +1,7 @@
 
 # NBA Team Stats
 
-[Live Website Page](https://danchanyoungkim.github.io/Project-1-stat-website/)
+[Live Website Page](https://danchanyoungkim.github.io/NBA-Team-Stats/)
 
 
 ![Main](./assets/images/screen-shots/load.PNG)
