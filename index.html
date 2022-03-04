@@ -31,8 +31,8 @@
         <div class='tile'>
                 <div id = "left-column" class = "column auto">
                     <p id = "text-select" class = "has-text-centered"> Select your team: </p>
-                    <select class = "drop-down" id = "dropDown">
-                      <option disabled selected> ------ Select Your Team ------ </option>
+                    <select class = "drop-down has-text-centered" id = "dropDown">
+                      <option disabled selected>Select Your Team</option>
                       <option value="Atlanta Hawks">Atlanta Hawks</option>
                       <option value="Boston Celtics">Boston Celtics</option>
                       <option value="Brooklyn Nets">Brooklyn Nets</option>
@@ -77,8 +77,10 @@
                     </figure>
                     <h2 id="teamAbr" class = "has-text-white is-size-3"></h2>    
                 </div>
-                <table id='teamStats' class="table is-bordered has-text-centered"></table>
-                <table id='player-list' class="table is-bordered has-text-centered"></table>
+                <div class = "table-container">
+                    <table id='teamStats' class="table is-bordered has-text-centered"></table>
+                    <table id='player-list' class="table is-bordered has-text-centered"></table>
+                </div>
             </div>
             <div class = ' column auto'>
                 <ul id= 'event-list' class="is-center">

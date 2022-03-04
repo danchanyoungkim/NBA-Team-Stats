@@ -40,7 +40,9 @@ nav {
 
 nav li {
     display: inline;
-    margin: 0 200px;;
+    margin: 0 100px;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 nav a {
@@ -59,16 +61,18 @@ nav a {
 
 
 .drop-down {
-    padding: 1px;
-    align-content: center;
-    justify-content: center;
-    margin-left: 15%;
+    padding: 2px;
+    width: 100%;
 }
 
 .nba {
     position: absolute;
     top: 134px;
     left: 188px;
+}
+
+#main-box {
+    margin-bottom: 100px;
 }
 
 #event-list li{
@@ -91,4 +95,36 @@ table {
     background-color: white;
     align-content: center;
     justify-content: center;
+}
+
+
+
+@media screen and (max-width: 1350px) {
+    main {
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+}
+
+@media 
+only screen and (max-width: 1350px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		/* display: block;  */
+	}
+	
+
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
 }
