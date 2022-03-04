@@ -1,5 +1,6 @@
 * {
     font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
 header {
@@ -14,8 +15,13 @@ header h1 {
     position: absolute;
     top: 0px;
     left: 0px;
-    color: aliceblue;
-    font-size: 125%;
+
+}
+
+.title {
+    font-size: 200%;
+    color: orange;
+    text-shadow: 2px 1px gray;
 }
 
 h2 {
