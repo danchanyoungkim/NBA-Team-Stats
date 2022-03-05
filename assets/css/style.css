@@ -59,20 +59,12 @@ nav a {
     left: 0px;
 }
 
-
-.drop-down {
+.drop-down,
+#clear,
+.recentTeam {
     padding: 2px;
     width: 100%;
-}
-
-.nba {
-    position: absolute;
-    top: 134px;
-    left: 188px;
-}
-
-#main-box {
-    margin-bottom: 100px;
+    margin: 3px 0;
 }
 
 #event-list li{
@@ -97,8 +89,6 @@ table {
     justify-content: center;
 }
 
-
-
 @media screen and (max-width: 1350px) {
     main {
         flex-wrap: wrap;
@@ -106,25 +96,12 @@ table {
     }
 }
 
-@media 
-only screen and (max-width: 1350px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+@media screen and (max-width: 768px) {
+    .drop-down {
+        font-size: 20px;
+    }
 
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
-		/* display: block;  */
-	}
-	
-
-	
-	tr { border: 1px solid #ccc; }
-	
-	td { 
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
-	}
-
+    #event-list li {
+        letter-spacing: 2px;
+    }
 }
