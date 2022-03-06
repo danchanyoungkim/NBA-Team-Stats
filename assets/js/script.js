@@ -263,7 +263,7 @@ function getApi(url) {
 
 // Changes from NBA logo to team logo depending on dropdown chosen.
 function inputImage(value) {
-  if(value !== "------ Select Your Team ------"){
+  if(value !== "Select Your Team"){
     document.getElementById("image").src =
       "./assets/images/" + value + ".png";
   } else {
