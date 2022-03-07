@@ -70,7 +70,6 @@ function showSaved() {
   })
 }
 
-
 function getTicketmaster(value) {
   let ticketMasterUrl = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${value}&apikey=l2pGA5pLy15WM8j3iHPwzwh3CgaxPYfG`;
 
