@@ -1,7 +1,7 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     height: 1000px;
-    background: linear-gradient(#2193b0, #6dd5ed)
+    background: linear-gradient(#1a758b, #6dd5ed)
 }
 
 p,
@@ -29,5 +29,10 @@ header {
 }
 
 header a {
-    color: white;
+    color: aliceblue;
+    text-shadow: 1px 1px blue;
+}
+
+.name {
+    text-shadow: 1px 1px blue;
 }
